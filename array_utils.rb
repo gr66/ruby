@@ -28,4 +28,9 @@ module ArrayUtils
   def self.sum_negative_elements(a)
     a.find_all{|z| z<0}.inject(:+)
   end
+
+  # Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют возрастающую последовательность. a.each_with_index.sort.each {|a| a[1]}
+  def self.sort_elements_rising_index
+    a.each_with_index.sort.each {|a| a[1]}
+  end
 end
