@@ -24,4 +24,8 @@ module ArrayUtils
   def self.convert_add_first_to_even_numbers(a)
     [a[0]] + a[1...-1].map{|s| s.even? ? s +a[0] : s } + [a[-1]]
   end
+  # В численном массиве найти сумму отрицательных элементов
+  def self.sum_negative_elements(a)
+    a.find_all{|z| z<0}.inject(:+)
+  end
 end
