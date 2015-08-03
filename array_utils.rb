@@ -22,7 +22,8 @@ module ArrayUtils
 
   #Дан целочисленный массив. Преобразовать его, прибавив к четным числам первый элемент. Первый и последний элементы массива не изменять.
   def self.convert_add_first_to_even_numbers(a)
-    [a[0]] + a[1...-1].map{|s| s.even? ? s +a[0] : s } + [a[-1]]
+    # [a[0]] + a[1...-1].map{|s| s.even? ? s +a[0] : s } + [a[-1]]
+    a.map.with_index{|v, i| i != 0 && i != a.size-1 && v.odd? ? v+a[0] : v}
   end
   # В численном массиве найти сумму отрицательных элементов
   def self.sum_negative_elements(a)
