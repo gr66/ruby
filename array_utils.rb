@@ -67,12 +67,13 @@ module ArrayUtils
     n=0
     l = 0
     while l < 2
-      if (n..a.size-(2)).step(2).map {|i| a[i], a[i+1] = a[i+1], a[i] if a[i]>a[i+1] }.compact.size > 0
-        n==0 ? n=1 : n=0
+      if (n..a.size-2).step(2).map {|i| a[i], a[i+1] = a[i+1], a[i] if a[i] > a[i+1] }.compact.size > 0
         l = 0
       else
         l += 1
       end
+
+      n==0 ? n=1 : n=0
     end
     a
   end
@@ -80,21 +81,21 @@ module ArrayUtils
   # Сортировка массива: обратный порядок
   def self.reverse_array(a)
     s = a.size
-    (0..s/2).map {|i| a[i], a[s-(i+1)] = a[s-(i+1)], a[i] }
+    (0..s/2-1).map {|i| a[i], a[s-(i+1)] = a[s-(i+1)], a[i] }
     a
   end
 
   # Сортировка массива: массив строк упорядочить по длине слов
-  def self.sort_odd_even_string(a)
+  def self.sort_string(a)
     n=0
     l = 0
     while l < 2
       if (n..a.size-(2)).step(2).map { |i| a[i], a[i+1] = a[i+1], a[i] if a[i].size > a[i+1].size }.compact.size > 0
-        n==0 ? n=1 : n=0
         l = 0
       else
         l += 1
       end
+        n==0 ? n=1 : n=0
     end
     a
   end
