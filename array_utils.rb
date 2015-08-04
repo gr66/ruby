@@ -36,11 +36,6 @@ module ArrayUtils
     a.each_with_index.sort.map {|a| a[1]}
   end
 
-  # Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют возрастающую последовательность. a.each_with_index.sort.each {|a| a[1]}
-  def self.sort_elements_rising_index
-    a.each_with_index.sort.each {|a| a[1]}
-  end
-
   # Дана строка слов, разделёных пробелами. Вывести длиннейшее слово.
   def self.max_size_string(a)
     a.split(" ").max_by {|e|  e.size}
