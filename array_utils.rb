@@ -16,12 +16,7 @@ module ArrayUtils
     [a.index{|v|  a[0] < v && v < a[-1]}].compact
   end
 
-  # Дан целочисленный массив. Вывести номер последнего из тех его элементов, которые удовлетворяют двойному неравенству: A[0] < A[i] < A[-1]. Если таких элементов нет, то вывести [ ].
-  def self.last_double_inequality(a)
-    [a.reverse.index{|v|  (a[0]+1...a[-1]).include?(v)}].compact
-  end
-
-  #Дан целочисленный массив. Преобразовать его, прибавив к четным числам первый элемент. Первый и последний элементы массива не изменять.
+   #Дан целочисленный массив. Преобразовать его, прибавив к четным числам первый элемент. Первый и последний элементы массива не изменять.
   def self.convert_add_first_to_even_numbers(a)
     # [a[0]] + a[1...-1].map{|s| s.even? ? s +a[0] : s } + [a[-1]]
     a.map.with_index{|v, i| i != 0 && i != a.size-1 && v.odd? ? v+a[0] : v}
@@ -78,12 +73,22 @@ module ArrayUtils
     a
   end
 
+  # Сортировка массива: чет/нечет sort
+  def self.sort(a)
+    a.sort.partition {|x| x.even?}.flatten
+  end
+
   # Сортировка массива: обратный порядок
   def self.reverse_array(a)
     s = a.size
     (0..s/2-1).map {|i| a[i], a[s-(i+1)] = a[s-(i+1)], a[i] }
     a
   end
+
+   # Сортировка массива: обратный порядок
+   def self.reverse(a)
+     a.each_with_index.sort { |a, b| b.last <=> a.last }.map { |a| a.first }
+   end
 
   # Сортировка массива: массив строк упорядочить по длине слов
   def self.sort_string(a)
@@ -98,5 +103,9 @@ module ArrayUtils
         n==0 ? n=1 : n=0
     end
     a
+  end
+
+  def self.reduce_map(a)
+    a.reduce ([]) {|sum , x| block_given? ? sum << yield(x) : x }
   end
 end
