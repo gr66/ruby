@@ -108,4 +108,22 @@ module ArrayUtils
   def self.reduce_map(a)
     a.reduce ([]) {|sum , x| block_given? ? sum << yield(x) : x }
   end
+
+  # 2. Дана строка, содержащая кириллицу, латиницу и цифры. Вывести все слова, длина которых равна средней.
+  def self.middle_sizу
+    middle = array.reduce(0) {|sum, e| sum += e.size}/array.size
+    array.find_all {|e| e.to_s.size == middle}
+  end
+
+  # 3. Найти в строке первое целиком кириллическое слово.
+  def self.first_cyrillic_word(a = [])
+    a = "first words русский язык могучий"
+    a.match(/\s[а-яА-Я]\s/)
+  end
+
+  # 9. Дан текст. Найдите все URL адреса и вычлените из них ссылку на корневую страницу сайта
+  # (например, из http://ru.wikibooks.org/wiki/Ruby сделайте http://ru.wikibooks.org).
+  def self.main_url(a)
+    a.gsub(/((http[s]?):\/\/)+([^:,\_ \s\/?!]+\.)+[a-z]{2,4}/).map {|x| x}
+  end
 end
