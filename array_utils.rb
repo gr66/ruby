@@ -124,6 +124,6 @@ module ArrayUtils
   # 9. Дан текст. Найдите все URL адреса и вычлените из них ссылку на корневую страницу сайта
   # (например, из http://ru.wikibooks.org/wiki/Ruby сделайте http://ru.wikibooks.org).
   def self.main_url(a)
-    a.gsub(/((http[s]?):\/\/)+([^:,\_ \s\/?!]+\.)+[a-z]{2,4}/).map {|x| x}
+    a.gsub(/((http[s]?):\/\/){1,1}([^:,\_ \s\/?!]+\.)+[a-z]{2,4}/).map {|x| x}
   end
 end
